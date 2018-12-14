@@ -1,0 +1,21 @@
+using Xunit;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+
+namespace KodrisDeneme.Tests
+{
+   public class KodrisDenemeTests
+    {
+        [Fact]
+        private void StartApplication()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("https://panel.kodris.com/login");
+            driver.FindElement(By.Name("username")).SendKeys("*********");
+            driver.FindElement(By.Name("password")).SendKeys("****");
+            driver.FindElement(By.Id("loginBtn")).Click();
+            driver.FindElement(By.XPath("/html/body/header/div/div/div/nav/ul/li[7]/a")).Click();
+        }
+    }
+}
